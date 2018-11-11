@@ -9,7 +9,14 @@
       <a href="#">My account</a> <a href="#">Change password</a>
       <a href="{% url 'logout' %}">Log out</a>
       <h2>Films</h2>
-
+      <div>
+        {% for post in posts %}
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.status }}</p>
+        <p>{{ post.rating }}</p>
+        <p>{{ post.text }}</p>
+        {% endfor %}
+      </div>
       {% else %}
       <form>
         <a href="{% url 'login' %}">Log in</a>
