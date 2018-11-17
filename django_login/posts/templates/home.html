@@ -1,14 +1,20 @@
 <html>
   <title>Films</title>
   <body>
-    <h1>Home</h1>
-    <div id="mainMenu">
+    <div>
       {% if user.is_authenticated %}
-      <a href="#" id="userMenu"> {{ user.username }} </a>
-      <h2>User Menu</h2>
+      <h1>Films</h1>
+      <p>{{ user.username }}</p>
+      <h2>Account</h2>
       <a href="#">My account</a> <a href="#">Change password</a>
       <a href="{% url 'logout' %}">Log out</a>
-      <h2>Films</h2>
+      <h2>My Films</h2>
+      <div>
+        <a href="{% url 'home' %}">All films</a>
+        <a href="{% url 'home' %}">To watch</a>
+        <a href="{% url 'home' %}">Watched</a>
+      </div>
+      <a href="{% url 'post_new' %}">Add film</a>
       <div>
         {% for post in posts %}
         <h3>{{ post.title }}</h3>
@@ -19,6 +25,7 @@
       </div>
       {% else %}
       <form>
+        <h1>Films</h1>
         <a href="{% url 'login' %}">Log in</a>
         <a href="{% url 'signup' %}">Sign up</a>
       </form>

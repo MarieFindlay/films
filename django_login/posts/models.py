@@ -6,19 +6,19 @@ from django.contrib.auth import get_user_model
 class Post(models.Model):
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    TO_WATCH = "TO_WATCH"
-    WATCHED = "WATCHED"
+    TO_WATCH = "To watch"
+    WATCHED = "Watched"
     WATCH_STATUS_OPTIONS = (
         (TO_WATCH, "To watch"),
         (WATCHED, "Watched")
     )
-    status = models.CharField(max_length=10, choices=WATCH_STATUS_OPTIONS, default="TO_WATCH")
-    NA = "NA"
-    ONE = "ONE"
-    TWO = "TWO"
-    THREE = "THREE"
-    FOUR = "FOUR"
-    FIVE = "FIVE"
+    status = models.CharField(max_length=15, choices=WATCH_STATUS_OPTIONS, default="To watch")
+    NA = "Not yet rated"
+    ONE = "1"
+    TWO = "2"
+    THREE = "3"
+    FOUR = "4"
+    FIVE = "5"
     RATING_OPTIONS = (
         (NA, "Not yet rated"),
         (ONE, "1"),
@@ -27,7 +27,7 @@ class Post(models.Model):
         (FOUR, "4"),
         (FIVE, "5"),  
     )
-    rating = models.CharField(max_length=10, choices=RATING_OPTIONS, default="NA")
+    rating = models.CharField(max_length=15, choices=RATING_OPTIONS, default="NA")
     text = models.TextField(blank=True, null=True)
     created_date = models.DateTimeField(default=timezone.now)
 
